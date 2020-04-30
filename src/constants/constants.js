@@ -1,5 +1,5 @@
 export const apiUrl = "http://localhost:8000/";
-export const dummyData = [
+export const dummyEntries = [
   {
     id: 1,
     name: "Finish this app",
@@ -28,3 +28,9 @@ export const dummyData = [
     difficulty: 5,
   },
 ];
+export const dummyUser = {
+  id: 1,
+  authId: "random-auth-info 42069",
+  level: 1,
+  xp: 0,
+};
