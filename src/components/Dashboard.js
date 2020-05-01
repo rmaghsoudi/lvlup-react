@@ -2,6 +2,7 @@ import React from "react";
 import EntryList from "./EntryList";
 // Temporary dummy data for testing
 import { dummyEntries, dummyUser } from "../constants/constants";
+import { apiCalls } from '../hooks/APICalls'
 import UserLeveling from "./UserLeveling";
 
 const Dashboard = () => {
