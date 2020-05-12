@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import EntryList from "./EntryList";
-// Temporary dummy data for testing
-import { dummyEntries } from "../constants/constants";
 import { ApiCalls } from "../hooks/APICalls";
 import UserLeveling from "./UserLeveling";
 
@@ -18,7 +16,7 @@ const Dashboard = () => {
       {apiUser ? (
         <>
           {console.log(apiUser)}
-          <EntryList entries={dummyEntries} />
+          <EntryList entries={apiUser.entries} />
           <UserLeveling user={apiUser} />
         </>
       ) : (
