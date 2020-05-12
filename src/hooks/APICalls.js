@@ -7,7 +7,7 @@ export function ApiCalls() {
   const [apiUser, setApiUser] = useState(null);
 
   const getUser = async () => {
-    const res = await axios.get("http://localhost:8000/users/")
+    const res = await axios.get(`${apiUrl}/users/`)
     setApiUser(res.data[0])
     setIsLoading(false)
   };
