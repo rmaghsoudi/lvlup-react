@@ -6,9 +6,9 @@ export function ApiCalls() {
   const [isLoading, setIsLoading] = useState(true);
   const [apiUser, setApiUser] = useState(null);
 
-  const getUser = async () => {
-    const res = await axios.get(`${apiUrl}/users/`)
-    setApiUser(res.data[0])
+  const getUser = async (userId) => {
+    const res = await axios.get(`${apiUrl}/users/${userId}`)
+    setApiUser(res.data)
     setIsLoading(false)
   };
 

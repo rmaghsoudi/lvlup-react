@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import EntryList from "./EntryList";
+// Dummy auth user placeholder
+import { dummyUserId } from "../constants/constants";
 import { ApiCalls } from "../hooks/APICalls";
 import UserLeveling from "./UserLeveling";
 
@@ -7,7 +9,7 @@ const Dashboard = () => {
   const { apiUser, getUser } = ApiCalls();
 
   useEffect(() => {
-    getUser();
+    getUser(dummyUserId);
   }, []);
 
   return (
