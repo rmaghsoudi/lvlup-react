@@ -4,7 +4,7 @@ export function ModalLogic() {
   const [showModal, setShowModal] = useState(false);
   const [entry, setEntry] = useState({});
 
-  const toggleModal = (entry) => {
+  const toggleModal = (entry={}) => {
     setEntry(entry);
     setShowModal(!showModal);
   };
