@@ -5,16 +5,12 @@ const EntryCard = (props) => {
 
   return (
     <div className="entry-card">
-      hello i am entry card
       <h3>{entry.name}</h3>
       <div className="card-content">
         <p>{entry.type}</p>
-        <p>{entry.difficulty}</p>
-        {entry.completed ? (
-          <input type="checkbox" checked />
-        ) : (
-          <input type="checkbox" />
-        )}
+        <p>Difficulty {entry.difficulty}</p>
+        <input type="checkbox" checked={entry.completed} />
+        <button onClick={() => props.toggleModal(entry)}>Toggle Modal</button>
       </div>
     </div>
   );

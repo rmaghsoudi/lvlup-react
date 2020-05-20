@@ -6,10 +6,12 @@ const UserLeveling = (props) => {
   return (
     <div className="user-leveling">
       <div className="xp-meter">
-        <p>You have {user.xp}XP points.</p>
+        <p>
+          {user.xp}/{user.xp_to_lvlup}XP to lvlup!
+        </p>
       </div>
       <div className="level-info">
-        <p>You're currently level {user.level}.</p>
+        <p>Level {user.level}.</p>
       </div>
     </div>
   );

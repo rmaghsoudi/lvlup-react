@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import EntryList from "./EntryList";
-// Dummy auth user placeholder
+import EntryModal from './EntryModal';
 import { dummyUserId } from "../constants/constants";
 import { ApiCalls } from "../hooks/APICalls";
+import { ModalLogic } from '../hooks/ModalLogic';
 import UserLeveling from "./UserLeveling";
 
 const Dashboard = () => {
   const { apiUser, getUser } = ApiCalls();
+  const { showModal, toggleModal, entry} = ModalLogic();
 
   useEffect(() => {
     getUser(dummyUserId);
@@ -15,10 +17,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <h1>Dashboard</h1>
+      {showModal ? <EntryModal entry={entry} toggleModal={toggleModal} /> : null}
       {apiUser ? (
         <>
-          {console.log(apiUser)}
-          <EntryList entries={apiUser.entries} />
+          <EntryList entries={apiUser.entries} toggleModal={toggleModal}/>
           <UserLeveling user={apiUser} />
         </>
       ) : (
