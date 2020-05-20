@@ -1,15 +1,21 @@
 import React from "react";
 import EntryCard from "./EntryCard";
+import { ModalLogic } from '../hooks/ModalLogic';
+import EntryModal from './EntryModal';
 
 const EntryList = (props) => {
+  const { showModal, toggleModal, entry} = ModalLogic();
 
   return (
     <div className="entry-list">
       hello i am entry list
       {props.entries ? (
-        props.entries.map((entry) => {
-          return <EntryCard entry={entry} toggleModal={props.toggleModal}/>;
-        })
+        <>
+        {props.entries.map((entry) => {
+          return <EntryCard entry={entry} toggleModal={toggleModal}/>;
+        })}
+        {showModal ? <EntryModal entry={entry} toggleModal={toggleModal} /> : null}
+        </>
       ) : (
         <p>No entries found.</p>
       )}
