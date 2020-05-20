@@ -5,13 +5,13 @@ export function ModalLogic() {
   const [entry, setEntry] = useState({});
 
   const toggleModal = (entry) => {
-    setEntry(entry)
-    setShowModal(!showModal)
+    setEntry(entry);
+    setShowModal(!showModal);
   };
 
   return {
     showModal,
     entry,
-    toggleModal
+    toggleModal,
   };
 }
