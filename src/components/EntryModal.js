@@ -1,35 +1,52 @@
 import React from "react";
+import {ApiCalls} from '../hooks/APICalls';
 
 const EntryModal = (props) => {
+  const {patchEntry} = ApiCalls();
   const entry = props.entry;
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // const data = {}
+    const formData = new FormData(e.target)
+    // formData.forEach((value, key) => {data[key] = value; console.log(key)});
+    patchEntry(formData, entry.id, entry.user)
+  };
 
   return (
     <div className="entry-modal">
       <div className="entry-modal-content">
-        <h3 contentEditable="true">{entry.name}</h3>
-        <div className="card-content">
-          
-          <label for="type-select">Type</label>
-          <select name="types" id="type-select" value={entry.type}>
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="name" id="modal-title" defaultValue={entry.name} />
+
+          <label htmlFor="type-select">Type</label>
+          <select name="type" id="type-select" defaultValue={entry.type}>
             <option value="task">Task</option>
             <option value="pillar">Pillar</option>
             <option value="goal">Goal</option>
           </select>
 
-          <label for="difficulty">Difficulty</label>
+          <label htmlFor="difficulty">Difficulty</label>
           <input
             type="number"
             name="difficulty"
             min="1"
             max="10"
-            value={entry.difficulty}
+            defaultValue={entry.difficulty}
           />
 
-          <label for="completed">Completed</label>
-          <input type="checkbox" name="completed" checked={entry.completed} />
+          <label htmlFor="completed">Completed</label>
+          <input
+            type="checkbox"
+            name="completed"
+            value="True"
+            defaultChecked={entry.completed}
+          />
 
-          <button onClick={() => props.toggleModal()}>Close Me</button>
-        </div>
+          <button type="submit">Save</button>
+        </form>
+        <button onClick={() => props.toggleModal()}>Close Me</button>
       </div>
     </div>
   );

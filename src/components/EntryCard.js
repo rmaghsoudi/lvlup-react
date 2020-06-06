@@ -9,7 +9,7 @@ const EntryCard = (props) => {
       <div className="card-content">
         <p>{entry.type}</p>
         <p>Difficulty {entry.difficulty}</p>
-        <input type="checkbox" checked={entry.completed} />
+        <input type="checkbox" defaultChecked={entry.completed} />
         <button onClick={() => props.toggleModal(entry)}>Toggle Modal</button>
       </div>
     </div>

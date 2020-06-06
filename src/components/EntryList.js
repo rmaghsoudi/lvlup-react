@@ -12,7 +12,7 @@ const EntryList = (props) => {
       {props.entries ? (
         <>
           {props.entries.map((entry) => {
-            return <EntryCard entry={entry} toggleModal={toggleModal} />;
+            return <EntryCard entry={entry} toggleModal={toggleModal} key={entry.id}/>;
           })}
           {showModal ? (
             <EntryModal entry={entry} toggleModal={toggleModal} />
