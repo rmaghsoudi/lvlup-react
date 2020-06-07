@@ -12,14 +12,21 @@ export function ApiCalls() {
     setIsLoading(false);
   };
 
-  const patchEntry = async (formData, entryId, userId) => {
+  const patchEntry = async (formData, entryId) => {
     await axios.patch(`${apiUrl}/entries/${entryId}`, formData);
-    // getUser(userId);
+    // formData.get('user') to get the user id
+    // getUser(userId); commented out until figure out auto refresh
+  };
+
+  const postEntry = async (formData) => {
+    await axios.post(`${apiUrl}/entries/`, formData);
+    // getUser(userId); commented out until figure out auto refresh
   };
 
   return {
     isLoading,
     patchEntry,
+    postEntry,
     getUser,
     apiUser,
   };

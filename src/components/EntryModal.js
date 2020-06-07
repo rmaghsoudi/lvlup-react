@@ -2,22 +2,28 @@ import React from "react";
 import {ApiCalls} from '../hooks/APICalls';
 
 const EntryModal = (props) => {
-  const {patchEntry} = ApiCalls();
+  const {patchEntry, postEntry} = ApiCalls();
   const entry = props.entry;
 
-
-  const handleSubmit = (e) => {
+  const handleSubmitPatch = (e) => {
     e.preventDefault()
-    // const data = {}
     const formData = new FormData(e.target)
-    // formData.forEach((value, key) => {data[key] = value; console.log(key)});
-    patchEntry(formData, entry.id, entry.user)
+    patchEntry(formData, entry.id)
+  };
+
+  const handleSubmitPost = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    postEntry(formData)
   };
 
   return (
     <div className="entry-modal">
       <div className="entry-modal-content">
-        <form onSubmit={handleSubmit}>
+        {console.log(entry)}
+        {console.log(entry === {})}
+
+        <form onSubmit={!Object.keys(entry).length ? handleSubmitPost : handleSubmitPatch}>
           <input type="text" name="name" id="modal-title" defaultValue={entry.name} />
 
           <label htmlFor="type-select">Type</label>
@@ -43,6 +49,8 @@ const EntryModal = (props) => {
             value="True"
             defaultChecked={entry.completed}
           />
+
+          <input type="hidden" name="user" value={entry.user} />
 
           <button type="submit">Save</button>
         </form>
